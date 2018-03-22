@@ -1,0 +1,2 @@
+class Pipe < ApplicationRecord
+end

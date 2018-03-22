@@ -1,0 +1,2 @@
+class PhaseField < ApplicationRecord
+end
