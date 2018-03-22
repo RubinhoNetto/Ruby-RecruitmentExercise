@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecruitmentExercise</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipefy-RecruitmentExercise</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
   </head>
-
   <body>
-    <%= yield %>
+
+    <div class="container">
+      <div class="navbar">
+        <h1 class="navbar-brand">Pipefy Recruitment Test</h1>
+        <button type="button" class="btn btn-outline-dark">Fetch Data</button>
+      </div>
+
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
+
