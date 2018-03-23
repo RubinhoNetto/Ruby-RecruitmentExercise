@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use postgresql as the database for Active Record
@@ -32,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'graphlient'
+gem 'rest-client', '~> 2.0', '>= 2.0.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
