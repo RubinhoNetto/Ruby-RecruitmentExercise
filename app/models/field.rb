@@ -1,5 +1,4 @@
 class Field < ApplicationRecord
-  belongs_to :phase
+  belongs_to :phase_field
 
-  validates :name, :value, :card
 end
