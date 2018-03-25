@@ -82,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: recruitment-exercise_production
-  username: postgres
-  password: postgres
+  database: df3mnseldnh1ub
+  username: yteawqrovhrvki
+  password: a3f0a7d35d3dde20ab876c8fa78143a7dbe2eee13d5df1479c32b5208fb82969
