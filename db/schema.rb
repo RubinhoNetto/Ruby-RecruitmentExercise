@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180322124014) do
   end
 
   create_table "phase_fields", force: :cascade do |t|
-    t.string "label"
+    t.string "name"
     t.bigint "pipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,7 +8,10 @@ module PipefyService
       @response = client_rest(query)
 
       if success?
-        return JSON.parse(@response)['data']
+        @response = JSON.parse(@response)['data']
+        OrganizationService.new(@response).call
+        
+        return @response
       end
 
       return { 'error' => "Não foi posssivel buscar os dados." }
@@ -17,7 +20,7 @@ module PipefyService
     private
 
     def get_organization_query
-      query = '{ "query": "{ organization (id: 92858) { id name pipes { id name phases { fields { label } cards { edges { node { id title created_at current_phase { name } due_date fields { name value } } } } } } } }" }'
+      query = '{ "query": "{ organization (id: 92858) { id name pipes { id name phases { id name fields { label } cards { edges { node { id title created_at current_phase { name } due_date fields { name value } } } } } } } }" }'
     end
 
     def client_rest(values)
