@@ -1,9 +1,12 @@
 class DashboardController < ApplicationController
     def index
+      @organization = Organization.find_by(id: OrganizationService::DEFAULT_ID)
+      @pipes = Pipe.fetch_pipes.map { |pipe| PreparePipe.new(pipe) }
     end
 
     def fetch_data
-      response = PipefyService.find_organization
-      render json: { 'response': response }
+      PipefyService.find_organization
+      
+      redirect_to '/'
     end
 end

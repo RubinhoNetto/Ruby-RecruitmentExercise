@@ -10,9 +10,11 @@ class FieldService
     @response.each do |_field|
       next unless valid?(_field)
       
-      field = Field.find_or_initialize_by(id: _field.dig('id'))
-      field.label = _field.dig('label')
-      field.phase_id = @phase.id
+      field = Field.find_or_initialize_by(value: _field.dig('id'))
+      field.value = _field.dig('id')
+      field.name = _field.dig('label')
+      field.pipe_id = @phase.pipe_id
+      field.phase_field_id = @phase.id
       field.save
     end
   end

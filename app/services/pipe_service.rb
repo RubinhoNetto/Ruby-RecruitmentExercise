@@ -8,7 +8,7 @@ class PipeService
 
   def call
     return unless is_valid?
-
+    
     @response.each do |_pipe|
       pipe = Pipe.find_or_initialize_by(id: _pipe.dig('id'))
       pipe.name = _pipe.dig('name')

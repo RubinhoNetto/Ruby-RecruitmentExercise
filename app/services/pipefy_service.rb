@@ -13,14 +13,12 @@ module PipefyService
         
         return @response
       end
-
-      return { 'error' => "Não foi posssivel buscar os dados." }
     end
 
     private
 
     def get_organization_query
-      query = '{ "query": "{ organization (id: 92858) { id name pipes { id name phases { id name fields { label } cards { edges { node { id title created_at current_phase { name } due_date fields { name value } } } } } } } }" }'
+      query = '{ "query": "{ organization (id: 92858) { id name pipes { id name phases { id name fields { id label } cards { edges { node { id title created_at current_phase { name } due_date fields { name value } } } } } } } }" }'
     end
 
     def client_rest(values)

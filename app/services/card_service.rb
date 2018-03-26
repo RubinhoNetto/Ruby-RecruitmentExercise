@@ -14,7 +14,11 @@ class CardService
       card.title = _card.dig('node', 'title')
       card.created_at = _card.dig('node', 'created_at')&.to_time
       card.due_date = _card.dig('node', 'due_date')&.to_time
+      card.pipe_id = @phase.pipe_id
+      card.phase_field_id = @phase.id
       card.save
+
+      CardFieldService.new(_card.dig('node', 'fields'), card).call
     end
   end
 

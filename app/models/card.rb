@@ -1,17 +1,11 @@
 class Card < ApplicationRecord
-  belongs_to :phase_field
+  belongs_to :pipe
 
-  has_many :fields, dependent: :destroy
+  has_many :card_fields, dependent: :destroy
 
-  def value(field_name)
-    attributes.merge(fields_attributes).fetch(field_name, nil)
-  end
+  validates_presence_of :title, :pipe, :phase_field_id
 
-  private
-
-  def fields_attributes
-    fields.each_with_object({}) do |field, hash|
-      hash[field.name] = field.value
-    end
+  def field_value(colunm, card)
+    card_fields.where(name: colunm).map { |field| field.value }.join("\n\n")
   end
 end

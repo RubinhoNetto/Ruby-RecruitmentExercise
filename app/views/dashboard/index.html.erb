@@ -1,31 +1,39 @@
 <div class="row">
   <div class="col-sm-12">
-    <h4>Back-end Test</h4>
-  </div>
-  <div class="col-sm-12">
-    <table class="table table-bordered table-hover table-sm">
-      <thead class="thead-light">
-        <tr>
-          <th>Header 1</th>
-          <th>Header 2</th>
-          <th>Header 3</th>
-          <th>Header 4</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Colunm 1</td>
-          <td>Colunm 2</td>
-          <td>Colunm 3</td>
-          <td>Colunm 4</td>
-        </tr>
-        <tr>
-          <td>Colunm 1</td>
-          <td>Colunm 2</td>
-          <td>Colunm 3</td>
-          <td>Colunm 4</td>
-        </tr>
-      </tbody>
-    </table>
+    <% @pipes.each do |pipe| -%>
+      <div class="col-sm-12">
+        <h4><%= !pipe.nil? ? pipe.name : 'Pipe' %></h4>
+      </div>
+      <table class="table table-bordered table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Title</th>
+            <th>Create At</th>
+            <th>Current Phase</th>
+            <th>Due Date</th>
+            <% pipe.fields.each do |field| -%>
+              <th><%= field.name %></th>
+            <% end -%>
+          </tr>
+        </thead>
+        <tbody>
+          <% pipe.phases.each do |phase_field| -%>
+            <% if phase_field.cards.any? -%>
+              <% phase_field.cards.each do |card| -%>
+                <tr>
+                  <td><%= card.title %></td>
+                  <td><%= card.created_at %></td>
+                  <td><%= phase_field.name %></td>
+                  <td><%= card.due_date %></td>
+                  <% pipe.fields.each do |field| -%>
+                    <th><%= card.field_value(field.name, card.id) %></th>
+                  <% end -%>
+                </tr>
+              <% end -%>
+            <% end -%>
+          <% end -%>
+        </tbody>
+      </table>
+    <% end -%>
   </div>
 </div>
