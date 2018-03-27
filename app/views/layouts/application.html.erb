@@ -15,7 +15,7 @@
     <div class="container">
       <div class="navbar">
         <h1 class="navbar-brand"><%= !@organization.nil? ? @organization.name : 'Back-end Test' %></h1>
-        <%= button_to 'Fetch Data', { action: "fetch_data" }, { method: :get, remote: true, class: 'btn btn-outline-dark' }%>
+        <%= button_to 'Fetch Data', { action: "fetch_data" }, { method: :get, class: 'btn btn-outline-dark' }%>
       </div>
 
       <div class="container-fluid">
